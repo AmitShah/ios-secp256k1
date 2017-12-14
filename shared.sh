@@ -9,7 +9,7 @@
 # build architectures
 # BUILD_ARCHS="i386 armv7s armv7 arm64"
 BUILD_ARCHS="armv7s armv7 arm64 i386 x86_64"
-
+#BUILD_ARCHS="x86_64"
 # XCode directories
 : ${XCODE_ROOT:=`xcode-select -print-path`}
 XCODE_SIMULATOR=$XCODE_ROOT/Platforms/iPhoneSimulator.platform/Developer
@@ -203,8 +203,8 @@ downloadSrc() {
 gitCloneSrc() {
   echo "CLong repo bitcoin-core/secp256k1"
   if [ ! -e "$WORKING_DIR/secp256k1" ]; then
-    git clone git://github.com/bitcoin-core/secp256k1.git
-    mv ./secp256k1 ./
+    git clone git://github.com/bitcoin-core/secp256k1.git $SRC_DIR/secp256k1-$FRAMEWORK_CURRENT_VERSION
+    #mv ./secp256k1 ./secp256k1-$FRAMEWORK_CURRENT_VERSION
   fi
   doneSection
 }

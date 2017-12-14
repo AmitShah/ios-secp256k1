@@ -86,12 +86,13 @@ compileSrcForArch() {
 
 configureForArch() {
   local buildArch=$1
-  cleanUpSrc
-  createDirs
-  untarLzippedBundle
+  #cleanUpSrc
+  #createDirs
+  #untarLzippedBundle
   echo "Configure for architecture $buildArch..."
   ( cd $SRC_DIR/$FRAMEWORK_NAME-$FRAMEWORK_CURRENT_VERSION; \
-    ./configure --prefix $BUILD_DIR/$buildArch --disable-shared --host="none-apple-darwin" --enable-static --disable-assembly --enable-module-recovery)
+     	./autogen.sh; \
+	./configure --prefix $BUILD_DIR/$buildArch --disable-shared --host="none-apple-darwin" --enable-static --disable-assembly --enable-module-recovery)
   doneSection
 }
 
